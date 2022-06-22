@@ -7,13 +7,14 @@
 
 <body>
     <div class="fuel-quote-form">
+        <h1>Fuel Quote Form</h1>
         <form class="quote-form" action="/quoteSubmit.js">
             <input type="number" name="gallons-requested" placeholder="Gallons Requested" inputmode="numeric" min="0" required autofocus>
             <input type="text" name="delivery-address" placeholder="Delivery Address">
             <input type="date" name="delivery-date">
             <input type="text" name="price-gallon" placeholder="Price Per Gallon" inputmode="numeric" min="0" readonly>
             <input type="text" name="total-due" placeholder="Total Amount Due" inputmode="numeric" min="0" readonly>
-            <input type="submit" value="Submit">
+            <input type="submit" class="submit-button" value="Submit">
         </form>
     </div>
 </body>

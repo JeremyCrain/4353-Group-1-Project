@@ -1,0 +1,7 @@
+.quote-form input {
+    display: block;
+    margin: auto;
+    border-radius: 5px;
+    width: 20%;
+    top: 50%;
+}

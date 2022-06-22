@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="quoteForm.css">
+</head>
+
+<body>
+    <div class="fuel-quote-form">
+        <form class="quote-form" action="/quoteSubmit.js">
+            <input type="number" name="gallons-requested" placeholder="Gallons Requested" inputmode="numeric" min="0" required autofocus>
+            <input type="text" name="delivery-address" placeholder="Delivery Address">
+            <input type="date" name="delivery-date">
+            <input type="text" name="price-gallon" placeholder="Price Per Gallon" inputmode="numeric" min="0" readonly>
+            <input type="text" name="total-due" placeholder="Total Amount Due" inputmode="numeric" min="0" readonly>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+
+</html>

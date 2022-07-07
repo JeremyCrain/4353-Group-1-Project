@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../stylesheets/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <h2 style="margin-left: 42%;">Registration Form</h2>
+    <form action="/fuelquote/register" method="POST">
+        <div class="imgcontainer">
+            <img src="../images/fuel.png" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="container">
+            <label for="username" class="required-field"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" required>
+
+            <label for="password" class="required-field"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" required>
+
+            <label for="repassword" class="required-field"><b>Retype Password</b></label>
+            <input type="password" placeholder="Retype Password" name="repassword" required>
+
+            <input type="submit" value="Register">
+        </div>
+    </form>
+
+</body>
+
+</html>

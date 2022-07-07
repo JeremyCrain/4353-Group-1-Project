@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../stylesheets/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <h2 style="margin-left: 42%;">Fuel Quote Form</h2>
+
+    <form action="/fuelquote/fuelquote" method="POST" id="quoteform">
+        <div class="imgcontainer">
+            <img src="../images/fuel.png" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="container">
+            <label for="galreq" class="required-field"><b>Gallons Requested</b></label>
+            <input type="number" placeholder="Gallons Requested" name="galreq" required>
+
+            <label for="add"><b>Delivery Address</b></label>
+            <input type="text" value="(706) 776-3358 1820 Mud Creek Rd Alto, Georgia(GA), 30510" name="add" readonly>
+
+            <label for="deldate" class="required-field"><b>Delivery Date</b></label>
+            <input type="date" placeholder="Delivery Date" name="deldate" required>
+
+            <label for="price"><b>Suggested Price</b></label>
+            <input type="number" value="100" name="price" readonly>
+
+            <label for="due"><b>Total Amount Due</b></label>
+            <input type="number" value="100" name="due" readonly>
+
+
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+
+</body>
+
+</html>

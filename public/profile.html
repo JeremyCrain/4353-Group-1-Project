@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../stylesheets/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <h2 style="margin-left: 38%;">
+        Profile Management Form</h2>
+    <form action="/fuelquote/edit_profile" method="PUT">
+        <div class="imgcontainer">
+            <img src="../images/user.png" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="container">
+            <label for="name" class="required-field"><b>Full Name</b></label>
+            <input type="text" placeholder="Enter Full Name" name="name" maxlength="50" required>
+
+            <label for="add1" class="required-field"><b>Address 1</b></label>
+            <input type="text" placeholder="Enter Address 1" name="add1" maxlength="100" required>
+
+            <label for="add2"><b>Address 2</b></label>
+            <input type="text" placeholder="Enter Address 2" name="add2" maxlength="100">
+
+            <label for="city" class="required-field"><b>City</b></label>
+            <input type="text" placeholder="Enter City" name="city" maxlength="100" required>
+
+            <label for="states" class="required-field"><b>State</b></label>
+            <select name="states" id="states">
+                <option value="arizona">AZ</option>
+                <option value="carlifornia">CA</option>
+                <option value="florida">FL</option>
+                <option value="georgia">GA</option>
+            </select>
+
+            <label for="zip" class="required-field"><b>Zip State</b></label>
+            <input type="text" placeholder="Enter Zip" name="zip" minlength="5" maxlength="9" required>
+
+            <input type="submit" value="Change">
+        </div>
+    </form>
+
+</body>
+
+</html>

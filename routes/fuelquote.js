@@ -15,7 +15,7 @@ router.get('/login', client_controller.login_get);
 router.post('/login', client_controller.login_post);
 
 router.get('/editProfile', client_controller.edit_profile_get);
-router.put('/editProfile', client_controller.edit_profile_put);
+router.post('/editProfile', client_controller.edit_profile_post);
 
 // Fuel Quote Routes
 

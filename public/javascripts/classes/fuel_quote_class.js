@@ -1,61 +1,45 @@
-//var con = require("../database")
-
 class FuelQuote {
-    #quoteID;
+    #userID = 0;
+    #quoteID = 0;
     #fuelRate = 0;
     #fuelAmount = 0;
     #profitMargin = 0;
 
-    constructor(id) {
-        /*
-        let query = "SELECT * FROM FuelQuote WHERE quoteID = ?";
-
-        con.connect(function(err) {
-            if (err) throw err;
-            con.query(query, function (err, result, fields) {
-            if (err) throw err;
-            console.log(result);
-            });
-        });
-        */
+    constructor()
+    {
         
-        let rate = result.fuelRate;
-        let amount = result.fuelAmount;
-        let margin = result.profitMargin;
-        
-        this.#setFuelRate(rate);
-        this.#quoteID(id);
-        this.#setFuelAmount(amount);
-        this.#setProfitMargin(margin);
-    };
+    }
 
-    calculateRate(client, profitMargin, gallonsRequested)
+    calculateRate(profitMargin, inState, history)
     {
         let rate;
-        let state;
-        let history;
+        let stateRate;
+        let historyRate;
 
-        if(client.getState == true)
+        console.log(profitMargin + inState + history);
+
+        if(inState == true)
         {
-            state = 0.8; // Placeholder
+            stateRate = 0.8; // Placeholder
         }
         else
         {
-            state = 1.2; // Placeholder
+            stateRate = 1.2; // Placeholder
         }
 
-        if(client.showQuoteHistory.length > 0)
+        if(history.length > 0)
         {
-            history = 0.3; // Placeholder
+            historyRate = 0.3; // Placeholder
         }
         else
         {
-            history = 1.3; // Placeholder
+            historyRate = 1.3; // Placeholder
         }
 
-        rate = profitMargin * gallonsRequested * state * history;
+        rate = profitMargin * stateRate * historyRate;
 
         this.#setFuelRate(rate);
+        this.#setProfitMargin(profitMargin);
 
         /*
         let query = "INSERT INTO FuelQuote (fuelRate, fuelAmount, profitMargin) VALUES (?, ?, ?)";
@@ -67,13 +51,14 @@ class FuelQuote {
             console.log(result);
             });
         });
-        */
+        
 
         let id = result.insertID;
 
         this.#setQuoteID(id);
+        */
 
-        return this.#fuelRate;
+        return rate;
     };
 
     #setQuoteID(id) {
@@ -98,6 +83,26 @@ class FuelQuote {
 
     #getFuelRate() {
         return this.#fuelRate;
+    };
+
+    #setUserID(newID) {
+        this.#userID = newID;
+
+        /*
+        let query = "UPDATE FuelQuote SET fuelAmount = ? WHERE fuelQuoteID = $this.quoteID";
+        
+        con.connect(function(err) {
+            if (err) throw err;
+            con.query(query, [newamount], function (err, result, fields) {
+            if (err) throw err;
+            console.log(result);
+            });
+        });
+        */
+    };
+
+    #getUserID() {
+        return this.#userID;
     };
 
     #setFuelAmount(newAmount) {

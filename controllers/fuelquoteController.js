@@ -3,30 +3,31 @@ const path = require('path');
 
 exports.quote_info_get = function(req, res) {
     res.sendFile(path.join(__dirname, '../public/fuelquote.html'));
-}
+};
 
 exports.quote_info_post = function(req, res) {
-    console.log("Request Body: " + req.body);
-    
-    let gallonsRequested, address, deliveryDate, fuelRate, totalAmount;
+    /*
+    function testQuote() {
 
-    gallonsRequested = req.body.galreq;
-    address = req.body.address;
-    deliveryDate = req.body.deldate;
-    fuelRate = req.body.price;
-    totalAmount = req.body.due;
 
-    // TODO: POST data into DB
-    
-    res.send("NOT IMPLEMENTED: Quote info POST");
-    
-    // Return to homepage
-    res.redirect('/fuelquote');
+        console.log("Amount Requested: " + amountRequested);
+        console.log("Delivery Date: " + deliveryDate);
+        console.log("Fuel Rate: " + fuelRate);
+        console.log("Total Due: " + totalDue);
+
+        // Save to DB;
+    }
+    let amountRequested = req.body.galreq;
+    let deliveryDate = req.body.deldate;
+    let fuelRate = req.body.rate;
+    let totalDue = req.body.total;
+
+    testQuote;
+    */
+    res.send("POST Quote to DB");
 }
 
 exports.quote_history_get = function(req, res) {
     
-    // TODO: Get data from DB, write to table
-
     res.sendFile(path.join(__dirname, '../public/fuelquotetable.html'));
 }

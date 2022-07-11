@@ -2,13 +2,13 @@
 <html>
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset='UTF-8'>
     <link href="../stylesheets/style.css" rel="stylesheet">
 </head>
 
 <body>
 
-    <h2 style="margin-left: 42%;">Fuel Quote Form</h2>
+    <h2>Fuel Quote Form</h2>
 
     <form action="/fuelquote/fuelquote" method="POST" id="quoteform">
         <div class="imgcontainer">
@@ -17,25 +17,27 @@
 
         <div class="container">
             <label for="galreq" class="required-field"><b>Gallons Requested</b></label>
-            <input type="number" placeholder="Gallons Requested" name="galreq" required>
+            <input type="number" placeholder="Gallons Requested" name="galreq" id="galreq" required>
 
             <label for="address"><b>Delivery Address</b></label>
-            <input type="text" value="(706) 776-3358 1820 Mud Creek Rd Alto, Georgia(GA), 30510" name="address" readonly>
+            <input type="text" value="(706) 776-3358 1820 Mud Creek Rd Alto, Georgia(GA), 30510" name="address" id="address" readonly>
 
             <label for="deldate" class="required-field"><b>Delivery Date</b></label>
-            <input type="date" placeholder="Delivery Date" name="deldate" required>
+            <input type="date" placeholder="Delivery Date" name="deldate" id="deldate" required>
 
-            <label for="price"><b>Suggested Price</b></label>
-            <input type="number" value="100" name="price" readonly>
+            <label for="rate"><b>Suggested Rate</b></label>
+            <input type="number" value="100" name="rate" id="rate" readonly>
 
-            <label for="due"><b>Total Amount Due</b></label>
-            <input type="number" value="100" name="due" readonly>
+            <label for="total"><b>Total Amount Due</b></label>
+            <input type="number" value="100" name="total" id="total" readonly>
 
-
-            <input type="submit" value="Submit">
+            <input type="submit" value="Submit" id="submit-button">
         </div>
     </form>
 
+
+
+    <script type="module" src="../javascripts/quote.js"> </script>
 </body>
 
 </html>

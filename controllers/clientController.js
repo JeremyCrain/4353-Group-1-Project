@@ -46,25 +46,9 @@ exports.register_get = function(req, res) {
 };
 
 exports.register_post = function(req, res) {
-    console.log("Request Body: " + req.body);
-    let username, password, password2;
+    let username = req.body.username.trim();
+    let password = req.body.password.trim();
 
-    username = req.body.username;
-    password = req.body.password;
-    password2 = req.body.repassword;
-
-    if(password == password2)
-    {
-        //res.send("NOT IMPLEMENTED: Register user POST");
-
-        // TODO: Hash PW and POST into DB
-        
-        res.redirect('/fuelquote/editProfile');
-    }
-    else
-    {
-        console.log("Passwords do not match");
-        alert("Passwords do not match");
-        res.redirect('/fuelquote/register');
-    }
+    // TODO: Save profile info to DB.
+    res.redirect('/fuelquote/editProfile');
 };

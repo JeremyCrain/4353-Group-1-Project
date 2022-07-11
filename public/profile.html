@@ -19,14 +19,17 @@
             <label for="name" class="required-field"><b>Full Name</b></label>
             <input type="text" placeholder="Enter Full Name" name="name" maxlength="50" required>
 
-            <label for="add1" class="required-field"><b>Address 1</b></label>
-            <input type="text" placeholder="Enter Address 1" name="add1" maxlength="100" required>
+            <label for="phone" class="required-field"><b>Phone Number</b></label>
+            <input type="text" placeholder="Enter Phone Number" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" title="XXX-XXX-XXXX" required>
 
-            <label for="add2"><b>Address 2</b></label>
-            <input type="text" placeholder="Enter Address 2" name="add2" maxlength="100">
+            <label for="address" class="required-field"><b>Address</b></label>
+            <input type="text" placeholder="Enter Address" name="address" maxlength="100" required>
+
+            <label for="email"><b>Email Address</b></label>
+            <input type="text" placeholder="Enter Email Address" name="email" maxlength="30" pattern="(\w+)@(\w+\.com)" required>
 
             <label for="city" class="required-field"><b>City</b></label>
-            <input type="text" placeholder="Enter City" name="city" maxlength="100" required>
+            <input type="text" placeholder="Enter City" name="city" maxlength="20" required>
 
             <label for="states" class="required-field"><b>State</b></label>
             <select name="states" id="states">
@@ -34,15 +37,16 @@
                 <option value="carlifornia">CA</option>
                 <option value="florida">FL</option>
                 <option value="georgia">GA</option>
+                <option value="texas">TX</option>
             </select>
 
             <label for="zip" class="required-field"><b>Zip State</b></label>
             <input type="text" placeholder="Enter Zip" name="zip" minlength="5" maxlength="9" required>
 
-            <input type="submit" value="Change">
+            <input type="submit" id="submit-button" value="Update Profile Information">
         </div>
     </form>
-
+    <script type="module" src="../javascripts/profile.js"> </script>
 </body>
 
 </html>

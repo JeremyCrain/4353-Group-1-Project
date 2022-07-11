@@ -1,7 +1,6 @@
-import fuelQuote from "fuel_quote_class.js";
-//var con = require("../database")
+import FuelQuote from "fuel_quote_class.js";
 
-class fuelQuoteHistory extends fuelQuote {
+class FuelQuoteHistory extends FuelQuote {
     #quoteNumber;
 
     constructor(quoteNum)
@@ -51,10 +50,10 @@ class fuelQuoteHistory extends fuelQuote {
         });
         */
 
-        return [rate, amount];
+        return [rate, amount, date, address];
     };
 
 
 };
 
-export default fuelQuoteHistory;
+export default FuelQuoteHistory;

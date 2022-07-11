@@ -1,4 +1,3 @@
-import { checkout } from "../../routes/fuelquote.js";
 import FuelQuote from "./classes/fuel_quote_class.js";
 
 function testPricingModule() {
@@ -35,8 +34,6 @@ document.getElementById("galreq").addEventListener('keyup', event => {
     document.getElementById("total").value = totalDue;
 });
 
-document.getElementById("submit-button").addEventListener("click", event => {
-    check('deldate')
-
-
-})
+document.getElementById("submit-button").addEventListener('click', event => {
+    alert("Quote successfully submitted!");
+});

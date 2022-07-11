@@ -1,5 +1,3 @@
-var con = require("../database");
-
 class Profile {
     #idNumber
     #profileName;
@@ -29,12 +27,14 @@ class Profile {
         phone = result.phoneNumber;
         email = result.emailAddress;
         state = result.state;
-        */
+        
 
         this.#setProfileName(name);
         this.#setPhone(phone);
         this.#setEmail(email);
         this.#setState(state);
+
+        */
 
         // GET all quote numbers associated with this client from DB
         /*
@@ -103,7 +103,11 @@ class Profile {
         });
     };
 
-    getID() {
+    #setID(newID) {
+        this.#idNumber = newID;        
+    };
+
+    #getID() {
         return this.#idNumber;        
     };
 
@@ -139,11 +143,11 @@ class Profile {
         return this.#inState;
     };
 
-    setQuoteHistory(quoteNumber) {
+    #setQuoteHistory(quoteNumber) {
         this.#quoteHistory.push(quoteNumber);
     };
 
-    getQuoteHistory() {
+    #getQuoteHistory() {
         return this.#quoteHistory;
     };
 

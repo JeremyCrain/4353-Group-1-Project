@@ -1,8 +1,10 @@
-//import LoginRegister from "./classes/login_register_class.js";
+const { default: LoginRegister } = require("./classes/login_register_class");
 
 function testRegister(event) {
 
     let username, password, password2;
+
+    console.log("Testing registration...");
 
     username = document.getElementById("username").value;
     password = document.getElementById("password").value;
@@ -10,24 +12,17 @@ function testRegister(event) {
 
     console.log(username + " " + password + " " + password2);
 
-    if(password === password2)
-    {
-        //res.send("NOT IMPLEMENTED: Register user POST");
+    let user = new LoginRegister;
 
-        // TODO: Hash PW and POST into DB
-        
-        //res.redirect('/fuelquote/editProfile');
-        location.reload();
-        
-    }
-    else
-    {
-        document.getElementById("error-msg").style.opacity = 1;
-        
-    }
+    user.registerUser(username, password);
 };
 
-document.getElementById("username").addEventListener("input", event => {
+document.getElementById("submit-button").addEventListener("click", event => {
+    testRegister(event);
+});
+
+
+document.getElementById("username").addEventListener("input", () => {
     if(document.getElementById("username").validity.valueMissing)
     {
         document.getElementById("username").setCustomValidity("Please enter a username.");
@@ -35,7 +30,7 @@ document.getElementById("username").addEventListener("input", event => {
     }
 });
 
-document.getElementById("password").addEventListener("input", event => {
+document.getElementById("password").addEventListener("input", () => {
     if(document.getElementById("password").validity.valueMissing)
     {
         document.getElementById("password").setCustomValidity("Please enter a password.");
@@ -43,7 +38,7 @@ document.getElementById("password").addEventListener("input", event => {
     }
 });
 
-document.getElementById("password2").addEventListener("input", event => {
+document.getElementById("password2").addEventListener("input", () => {
     if(document.getElementById("password2").validity.valueMissing)
     {
         document.getElementById("password2").setCustomValidity("You must re-enter your password.");
@@ -51,7 +46,7 @@ document.getElementById("password2").addEventListener("input", event => {
     }
 });
 
-document.getElementById("password2").addEventListener('keyup', event => {
+document.getElementById("password2").addEventListener('keyup', () => {
     //console.log("Testing passwords");
     
     
@@ -70,7 +65,7 @@ document.getElementById("password2").addEventListener('keyup', event => {
     }
 });
 
-document.getElementById("password").addEventListener('keyup', event => {
+document.getElementById("password").addEventListener('keyup', () => {
     //console.log("Testing passwords");
     
     

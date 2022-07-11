@@ -22,7 +22,8 @@ let quoteValidation = [
 let profileValidation = [
     check('name').isAlpha(),
     check('city').isAlpha(),
-    check('zip').isNumeric()
+    check('zip').isNumeric(),
+    check('email').isEmail().normalizeEmail()
 ]
 
 // Require controller modules.

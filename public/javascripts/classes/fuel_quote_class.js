@@ -4,10 +4,25 @@ class FuelQuote {
     #fuelRate = 0;
     #fuelAmount = 0;
     #profitMargin = 0;
+    #deliveryDate;
+    #address;
 
-    constructor()
+    constructor(quoteID)
     {
+        // GET quote info from DB
+
+        /*
+        let userID, rate, amount, margin, deliveryDate, address;
         
+        this.#setQuoteID(quoteID);
+        this.#setUserID(userID);
+        this.#setFuelRate(rate);
+        this.#setFuelAmount(amount);
+        this.#setProfitMargin(margin);
+        this.#setDeliveryDate(deliveryDate);
+        this.#setAddress(address);
+        */
+
     }
 
     calculateRate(profitMargin, inState, history)
@@ -61,8 +76,36 @@ class FuelQuote {
         return rate;
     };
 
+    #setUserID(newid) {
+        this.#userID = newid;
+    };
+
+    #getUserID() {
+        return this.#userID;
+    };
+
+    #setDeliveryDate(newDate) {
+        this.#deliveryDate = newDate;
+    };
+
+    #getDeliveryDate() {
+        return this.#deliveryDate;
+    };
+
+    #setAddress(newAddress) {
+        this.#address = newAddress;
+    }
+
+    #getAddress() {
+        return this.#address;
+    };
+
     #setQuoteID(id) {
         this.#quoteID = id;
+    };
+
+    #getQuoteID() {
+        return this.#quoteID;
     };
 
     #setFuelRate(newRate) {

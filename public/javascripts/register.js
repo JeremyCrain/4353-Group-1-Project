@@ -80,6 +80,6 @@ document.getElementById("password").addEventListener('keyup', () => {
     }
     else
     {
-        
+       document.getElementById("error-msg").style.opacity = "1"; 
     }
 });

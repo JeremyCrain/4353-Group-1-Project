@@ -38,6 +38,6 @@ document.getElementById("password").addEventListener("input", () => {
     if(document.getElementById("password").validity.valueMissing)
     {
         document.getElementById("password").setCustomValidity("Please enter a password.");
-        document.getElementById("password").reportValidity();
+        
     }
 });

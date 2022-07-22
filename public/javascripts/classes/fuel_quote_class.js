@@ -1,4 +1,4 @@
-import Client from "../../../models/client.js";
+//import Client from "../../../models/client.js";
 
 class FuelQuote {
     #userID = 0;
@@ -8,25 +8,6 @@ class FuelQuote {
     #profitMargin = 0;
     #deliveryDate;
     #address;
-
-    constructor(quoteID)
-    {
-        // GET quote info from DB
-
-
-        /*
-        let userID, rate, amount, margin, deliveryDate, address;
-        
-        this.#setQuoteID(quoteID);
-        this.#setUserID(userID);
-        this.#setFuelRate(rate);
-        this.#setFuelAmount(amount);
-        this.#setProfitMargin(margin);
-        this.#setDeliveryDate(deliveryDate);
-        this.#setAddress(address);
-        */
-
-    }
 
     calculateRate(profitMargin, inState, history)
     {
@@ -153,5 +134,5 @@ class FuelQuote {
     };
 };
 
-//export default FuelQuote;
+
 module.exports = FuelQuote;

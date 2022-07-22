@@ -1,4 +1,4 @@
 function checkFormValid() {
-    let formValid = document.forms['loginForm'].reportValidity();
-    return formValid;
+  let formValid = document.forms["loginForm"].reportValidity();
+  return formValid;
 }

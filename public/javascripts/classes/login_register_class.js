@@ -5,7 +5,6 @@ const saltRounds = 10;
 
 class LoginRegister {
     #username;
-    #password;
 
     async loginUser(usernameInput, passwordInput) {
         // Connect to DB and check username & password vs inputs
@@ -28,13 +27,14 @@ class LoginRegister {
             if(match)
             {
                 flag = true;
+                this.setUserName(usernameInput);
             }
             else{
                 flag = false;
             }
         }
 
-        console.log("Row ", user);
+        //console.log("Row ", user);
 
         return flag;
     };
@@ -64,15 +64,6 @@ class LoginRegister {
     getUserName() {
         return this.#username;
     }
-
-    setPassword(newPass) {
-        this.#password = newPass;
-    }
-
-    getPassword() {
-        return this.#password;
-    }
-
-}
+};
 
 module.exports = LoginRegister;

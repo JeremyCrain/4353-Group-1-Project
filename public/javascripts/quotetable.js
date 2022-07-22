@@ -57,8 +57,7 @@ fetch(userurl)
             cellDate.appendChild(date);
             cellRate.appendChild(fuelRate);
             cellTotal.appendChild(total);
-        
-            
+
             row.appendChild(cellAmount);
             row.appendChild(cellAdd);
             row.appendChild(cellDate);

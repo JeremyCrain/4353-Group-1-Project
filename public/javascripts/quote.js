@@ -2,14 +2,11 @@ let userParam = window.location.href;
 let index = userParam.lastIndexOf("/");
 userParam = userParam.substring(index + 1);
 
-document.getElementById("quoteForm").action =
-  "/quote/" + userParam;
+document.getElementById("quoteForm").action = "/quote/" + userParam;
 
-
-document.getElementById('profileLink').href = "/editProfile/" + userParam;
-document.getElementById('quoteLink').href = "/quote/" + userParam;
-document.getElementById('historyLink').href = "/quoteHistory/" + userParam;
-
+document.getElementById("profileLink").href = "/editProfile/" + userParam;
+document.getElementById("quoteLink").href = "/quote/" + userParam;
+document.getElementById("historyLink").href = "/quoteHistory/" + userParam;
 
 const userurl = "http://localhost:3000/profileInfo/" + userParam;
 
@@ -25,16 +22,15 @@ fetch(userurl)
         address.value = user.address;
       }
     }
+  });
+
+let total = document.getElementById("total");
+let req = document.getElementById("galreq");
+let rate = document.getElementById("rate");
+
+req.addEventListener("keyup", () => {
+  total.value = req.value * rate.value;
 });
-
-let total = document.getElementById('total');
-let req = document.getElementById('galreq');
-let rate = document.getElementById('rate');
-
-req.addEventListener('keyup', () => {
-    total.value = req.value * rate.value;
-})
-
 
 // Fetch rate
 //const pricingurl = "http://localhost:3000/profileInfo/" + userParam;

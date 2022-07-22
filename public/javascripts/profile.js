@@ -8,14 +8,11 @@ let userParam = window.location.href;
 let index = userParam.lastIndexOf("/");
 userParam = userParam.substring(index + 1);
 
-document.getElementById("profileForm").action =
-  "/editProfile/" + userParam;
+document.getElementById("profileForm").action = "/editProfile/" + userParam;
 
-
-document.getElementById('profileLink').href = "/editProfile/" + userParam;
-document.getElementById('quoteLink').href = "/quote/" + userParam;
-document.getElementById('historyLink').href = "/quoteHistory/" + userParam;
-  
+document.getElementById("profileLink").href = "/editProfile/" + userParam;
+document.getElementById("quoteLink").href = "/quote/" + userParam;
+document.getElementById("historyLink").href = "/quoteHistory/" + userParam;
 
 console.log(userParam);
 

@@ -2,37 +2,41 @@
 <html>
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset='UTF-8'>
     <link href="../stylesheets/style.css" rel="stylesheet">
 </head>
 
 <body>
+    <a id="profileLink" href="/editProfile">Profile</a>
+    <a id="quoteLink" href="/quote">Quote</a>
+    <a id="historyLink" href="/quoteHistory">History</a>
+    <a id="logout" href="/">Logout</a>
 
     <h2>
         Profile Management Form</h2>
-    <form action="/fuelquote/edit_profile" method="POST">
+    <form action="/editProfile" method="POST" id="profileForm">
         <div class="imgcontainer">
             <img src="../images/user.png" alt="Avatar" class="avatar">
         </div>
 
         <div class="container">
-            <label for="name" class="required-field"><b>Full Name</b></label>
-            <input type="text" placeholder="Enter Full Name" name="name" maxlength="50" required>
+            <label for="fname" class="required-field"><b>First Name</b></label>
+            <input type="text" placeholder="Enter First Name" name="fname" id="fname" maxlength="50" required>
+
+            <label for="lname" class="required-field"><b>Last Name</b></label>
+            <input type="text" placeholder="Enter Last Name" name="lname" id="lname" maxlength="50" required>
 
             <label for="phone" class="required-field"><b>Phone Number</b></label>
-            <input type="text" placeholder="Enter Phone Number" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" title="XXX-XXX-XXXX" required>
+            <input type="text" placeholder="Enter Phone Number" name="phone" id="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" title="XXX-XXX-XXXX" required>
 
             <label for="address" class="required-field"><b>Address</b></label>
-            <input type="text" placeholder="Enter Address" name="address" maxlength="100" required>
+            <input type="text" placeholder="Enter Address" name="address" id="address" maxlength="100" required>
 
             <label for="email"><b>Email Address</b></label>
-            <input type="text" placeholder="Enter Email Address" name="email" maxlength="30" pattern="(\w+)@(\w+\.com)" required>
+            <input type="text" placeholder="Enter Email Address" name="email" id="email" maxlength="30" pattern="(\w+)@(\w+\.com)" required>
 
-            <label for="city" class="required-field"><b>City</b></label>
-            <input type="text" placeholder="Enter City" name="city" maxlength="20" required>
-
-            <label for="states" class="required-field"><b>State</b></label>
-            <select name="states" id="states">
+            <label for="state" class="required-field"><b>State</b></label>
+            <select name="state" id="state">
                 <option value="arizona">AZ</option>
                 <option value="carlifornia">CA</option>
                 <option value="florida">FL</option>
@@ -40,13 +44,12 @@
                 <option value="texas">TX</option>
             </select>
 
-            <label for="zip" class="required-field"><b>Zip State</b></label>
-            <input type="text" placeholder="Enter Zip" name="zip" minlength="5" maxlength="9" required>
+            <span id="error"></span>
 
             <input type="submit" id="submit-button" value="Update Profile Information">
         </div>
     </form>
-    <script type="module" src="../javascripts/profile.js"> </script>
 </body>
+<script src="../javascripts/profile.js"> </script>
 
 </html>

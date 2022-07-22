@@ -1,30 +1,51 @@
-var Quote = require('../models/fuelquote');
 const path = require('path');
+const Quote = require("../models/fuelquote.js");
+const Client = require("../models/client.js");
 
 exports.quote_info_get = function(req, res) {
     res.sendFile(path.join(__dirname, '../public/fuelquote.html'));
 };
 
-exports.quote_info_post = function(req, res) {
-    /*
-    function testQuote() {
+exports.quote_info_post = async function(req, res) {
+    console.log(req.body);
 
+    let galreq, address, rate, total;
 
-        console.log("Amount Requested: " + amountRequested);
-        console.log("Delivery Date: " + deliveryDate);
-        console.log("Fuel Rate: " + fuelRate);
-        console.log("Total Due: " + totalDue);
+    let username = req.params.user;
 
-        // Save to DB;
+    galreq = req.body.galreq;
+    address = req.body.address;
+    rate = req.body.rate;
+    total = req.body.total;
+
+    let clientInfo = await Client.findOne({
+        username: username,
+    });
+
+    if(!clientInfo)
+    {
+        res.send("Error: Cannot find user");
     }
-    let amountRequested = req.body.galreq;
-    let deliveryDate = req.body.deldate;
-    let fuelRate = req.body.rate;
-    let totalDue = req.body.total;
+    else {
+        let quote = new Quote({
+            requester: clientInfo,
+            in_state: clientInfo.in_state,
+            amount_requested: galreq,
+            fuel_rate: rate,
+            delivery_address: address,
+            total_cost: total,
+        })
 
-    testQuote;
-    */
-    res.send("POST Quote to DB");
+        clientInfo.quote_history.push(quote);
+
+        await clientInfo.save();
+
+        await quote.save();
+    }
+
+    
+
+    res.sendFile(path.join(__dirname, '../public/fuelquote.html'));
 }
 
 exports.quote_history_get = function(req, res) {

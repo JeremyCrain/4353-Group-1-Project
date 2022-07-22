@@ -8,7 +8,11 @@ var QuoteSchema = new Schema(
     date_requested: {type: Date, default: Date.now()},
     profit_margin: {type: Number},
     amount_requested: {type: Number, required: true},
-    fuel_rate: {type: Number, required: true}
+    fuel_rate: {type: Number, required: true},
+    in_state: {type: Boolean, required: true},
+    delivery_address: {type: String, required: true},
+    total_cost: {type: Number, required: true},
+
   }
 );
 

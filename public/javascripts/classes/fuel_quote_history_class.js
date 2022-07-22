@@ -1,4 +1,4 @@
-import FuelQuote from "fuel_quote_class.js";
+import Client from "../../../models/client.js";
 
 class FuelQuoteHistory extends FuelQuote {
     #quoteNumber;
@@ -8,9 +8,9 @@ class FuelQuoteHistory extends FuelQuote {
         this.#quoteNumber = quoteNum;
     };
 
-    saveQuote(client, fuelAmount, fuelRate) {
+    saveQuote(userID, fuelAmount, fuelRate) {
         // Connect to DB and create a new quote with fields: Client's ID Number, fuel amount requested, fuel rate
-        let clientID = client.getID();
+        let clientID = Client.findById();
         let quote;
 
         /*
@@ -29,7 +29,7 @@ class FuelQuoteHistory extends FuelQuote {
         */
 
         this.#quoteNumber = quote;
-        client.setQuoteHistory(quote);
+        clientID.setQuoteHistory(quote);
 
         return this.#quoteNumber;
     };
@@ -56,4 +56,5 @@ class FuelQuoteHistory extends FuelQuote {
 
 };
 
-export default FuelQuoteHistory;
+//export default FuelQuoteHistory;
+module.exports = FuelQuoteHistory;

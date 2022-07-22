@@ -3,12 +3,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var bodyParser = require('body-parser');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var clientQuoteRouter = require("./routes/fuelquote");
+
+var clientQuoteRouter = require("./routes/index");
 
 var app = express();
+
 
 //Set up mongoose connection
 var mongoose = require('mongoose');
@@ -27,10 +28,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use( bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/fuelquote', clientQuoteRouter);
+
+app.use('/', clientQuoteRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

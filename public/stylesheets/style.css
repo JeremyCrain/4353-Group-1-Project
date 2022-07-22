@@ -3,7 +3,7 @@ body {
     color:rgb(0, 0, 0);
     background-image: url('../images/bg6.jpg');
     background-size: cover
-}
+}  
 
 h2 {
     margin: 0 auto;
@@ -32,16 +32,6 @@ input[type=submit] {
     display: block;
     border: 1px solid #ccc;
     box-sizing: border-box;
-}
-
-button {
-    background-color: #04AA6D;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 50%;
 }
 
 button:hover {

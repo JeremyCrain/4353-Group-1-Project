@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset='UTF-8'>
     <link href="../stylesheets/style.css" rel="stylesheet">
 </head>
 
@@ -18,24 +18,26 @@
         <p id="error-msg">Invalid username or password</p>
     </div>
 
-    <form action="/fuelquote/login" method="POST">
+    <form action="/login" method="POST" id="loginForm" onsubmit="return checkFormValid()">
         
 
         <div class="container">
             <label for="username" class="required-field"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="username" required>
+            <input type="text" placeholder="Enter Username" name="username" id="username" required minLength="4">
 
             <label for="password" class="required-field"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="password" required>
+            <input type="password" placeholder="Enter Password" name="password" id="password" required minLength="4">
+            <span id="error"></span>
 
-            <input type="submit" value ="Login" id="submit-button">
+            <input type="submit" value ="Login" id="submit-button" >
         </div>
 
         <div class="container ">
-            <span class="reg ">Don't have an account? <a href="/fuelquote/register">Register here</a></span>
+            <span class="reg ">Don't have an account? <a href="/register">Register here</a></span>
         </div>
     </form>
-    <script type="module" src="../javascripts/register.js"> </script>
 </body>
+
+<script src="../javascripts/login.js"> </script>
 
 </html>

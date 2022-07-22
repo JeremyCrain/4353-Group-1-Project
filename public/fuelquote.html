@@ -7,10 +7,14 @@
 </head>
 
 <body>
+    <a id="profileLink" href="/editProfile">Profile</a>
+    <a id="quoteLink" href="/quote">Quote</a>
+    <a id="historyLink" href="/quoteHistory">History</a>
+    <a id="logout" href="/">Logout</a>
 
     <h2>Fuel Quote Form</h2>
 
-    <form action="/fuelquote/fuelquote" method="POST" id="quoteform">
+    <form action="/quote" method="POST" id="quoteForm">
         <div class="imgcontainer">
             <img src="../images/fuel.png" alt="Avatar" class="avatar">
         </div>
@@ -20,16 +24,15 @@
             <input type="number" placeholder="Gallons Requested" name="galreq" id="galreq" required>
 
             <label for="address"><b>Delivery Address</b></label>
-            <input type="text" value="(706) 776-3358 1820 Mud Creek Rd Alto, Georgia(GA), 30510" name="address" id="address" readonly>
-
-            <label for="deldate" class="required-field"><b>Delivery Date</b></label>
-            <input type="date" placeholder="Delivery Date" name="deldate" id="deldate" required>
+            <input type="text" placeholder="Delivery Address" name="address" id="address" readonly>
 
             <label for="rate"><b>Suggested Rate</b></label>
-            <input type="number" value="100" name="rate" id="rate" readonly>
+            <input type="text" value="100" name="rate" id="rate" readonly>
 
             <label for="total"><b>Total Amount Due</b></label>
-            <input type="number" value="100" name="total" id="total" readonly>
+            <input type="text" value="100" name="total" id="total" readonly>
+            
+            <span id="error"></span>
 
             <input type="submit" value="Submit" id="submit-button">
         </div>
@@ -37,7 +40,7 @@
 
 
 
-    <script type="module" src="../javascripts/quote.js"> </script>
+    <script src="../javascripts/quote.js"> </script>
 </body>
 
 </html>

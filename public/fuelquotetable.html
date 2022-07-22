@@ -2,25 +2,34 @@
 <html>
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset='UTF-8'>
     <link href="../stylesheets/style.css" rel="stylesheet">
 </head>
 
 <body>
+    <a id="profileLink" href="/editProfile">Profile</a>
+    <a id="quoteLink" href="/quote">Quote</a>
+    <a id="historyLink" href="/quoteHistory">History</a>
+    <a id="logout" href="/">Logout</a>
 
     <h2>Fuel Quote History</h2>
     
     
     <table>
-        <tr>
-            <th>Gallons Requested</th>
-            <th>Delivery Address</th>
-            <th>Delivery Date</th>
-            <th>Fuel Rate</th>
-            <th>Total Amount Due</th>
-        </tr>
-        <script type="module" src="../javascripts/quotetable.js"> </script>
+        <thead>
+            <tr>
+                <th>Gallons Requested</th>
+                <th>Delivery Address</th>
+                <th>Date Requested</th>
+                <th>Fuel Rate</th>
+                <th>Total Amount Due</th>
+            </tr>
+        </thead>
+        <tbody id="historyTable">
+        </tbody>
     </table>
+
+    <script src="../javascripts/quotetable.js"> </script>
 </body>
 
 </html>

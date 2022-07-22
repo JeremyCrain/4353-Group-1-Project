@@ -1,54 +1,131 @@
-var Client = require('../models/client');
+var Client = require('../models/client.js');
+var User = require('../models/userCred');
+const LoginRegister = require("../public/javascripts/classes/login_register_class.js");
 const path = require('path');
+const { response } = require('express');
+const { nextTick } = require('process');
+
 
 exports.edit_profile_get = function(req, res) {
     res.sendFile(path.join(__dirname, '../public/profile.html'));
 };
 
-exports.edit_profile_post = function(req, res) {
-    console.log("Request Body: " + req.body);
+exports.edit_profile_post = async function(req, res) {
+    console.log(req.body);
 
-    let name, address1, address2, city, state, zip;
+    let fname, lname, phone, address, email, state;
 
-    name = req.body.name;
-    address1 = req.body.add1;
-    address2 = req.body.add2;
-    city = req.body.city;
-    state = req.body.states;
-    zip = req.body.zip;
+    let username = req.params.user;
 
-    // TODO: PUT new profile values into DB 
+    fname = req.body.fname;
+    lname = req.body.lname;
+    phone = req.body.phone;
+    address = req.body.address;
+    email = req.body.email;
+    state = req.body.state;
 
-    res.send("NOT IMPLEMENTED: Edit Profile POST");
+    if(state == "texas")
+    {
+        state = true;
+    }
+    else
+    {
+        state = false;
+    }
+
+    let clientInfo = await Client.findOne({
+        username: username,
+    });
+
+    if(!clientInfo)
+    {
+        clientInfo = new Client({
+            first_name: fname,
+            last_name: lname,
+            phone_number: phone,
+            address: address,
+            email_address: email,
+            in_state: state,
+            username: username,
+        })
+    }
+    else {
+        clientInfo.first_name = fname;
+        clientInfo.last_name = lname;
+        clientInfo.phone_number = phone;
+        clientInfo.address = address;
+        clientInfo.email_address = email;
+        clientInfo.in_state = state;
+    }
+
+    await clientInfo.save();
+
+    //res.send("User info successfully updated.");
+    res.sendFile(path.join(__dirname, '../public/profile.html'));
 };
 
 exports.login_get = function(req, res) {
     res.sendFile(path.join(__dirname, '../public/login.html'));
 };
 
-exports.login_post = function(req, res) {
-    //res.send("NOT IMPLEMENTED: Login user POST");
-    console.log("Request Body: " + req.body);
-
-    let username, password;
+exports.login_post = async function(req, res) {
+    let username, password, loginSuccessful;
 
     username = req.body.username;
     password = req.body.password;
 
-    // TODO: Hash PW and GET password from DB
-    
+    console.log(username + " " + password);
 
-    res.redirect('/fuelquote/editProfile');
+    let user = new LoginRegister;
+
+    loginSuccessful = await user.loginUser(username, password);
+
+    if(loginSuccessful == false)
+    {
+        res.redirect('/');
+    }
+    else
+    {
+        res.redirect('/editProfile/' + user.getUserName());
+    }
+
+    console.log("Success: ", loginSuccessful);
+
+    
+    res.end();
 };
 
 exports.register_get = function(req, res) {
     res.sendFile(path.join(__dirname, '../public/register.html'));
 };
 
-exports.register_post = function(req, res) {
-    let username = req.body.username.trim();
-    let password = req.body.password.trim();
+exports.register_post = async function(req, res) {
+    let username = req.body.username;
+    let password = req.body.password;
+    let password2 = req.body.password2;
 
-    // TODO: Save profile info to DB.
-    res.redirect('/fuelquote/editProfile');
+    console.log(username, password, password2);
+
+    let usernameCheck = User.find({
+        username: username,
+    });
+
+    console.log(usernameCheck);
+
+    if(usernameCheck.length)
+    {
+        console.log("Username already in use. Please try another.")
+        res.redirect('back');
+    }
+
+    if(password !== password2)
+    {
+        res.redirect('back');
+    }
+
+    let user = new LoginRegister;
+
+    await user.registerUser(username, password);
+    
+    res.redirect('/login');
 };

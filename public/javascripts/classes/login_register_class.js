@@ -1,77 +1,78 @@
-//var con = require("../database")
+const User = require('../../../models/userCred');
+var bcrypt = require('bcrypt');
+
+const saltRounds = 10;
 
 class LoginRegister {
     #username;
     #password;
 
-    loginUser(usernameInput, passwordInput) {
+    async loginUser(usernameInput, passwordInput) {
         // Connect to DB and check username & password vs inputs
-        let pass;
-        /*
-        let query = "SELECT password FROM Clients WHERE username = ?";
+        let flag;
 
-        con.connect(function(err) {
-            if (err) throw err;
-            con.query(query, [usernameInput], function (err, result, fields) {
-            if (err) throw err;
-            console.log(result);
-            });
+        let user = await User.findOne({
+            username: usernameInput,
         });
 
-        pass = result.password;
-        */
 
-        if(passwordInput === pass)
+        if(!user)
         {
-            this.#setUserName(usernameInput);
-            this.#setPassword(pass);
-            return true;
+            console.log("User not found");
+            flag = false;
         }
         else
         {
-            return false;
+            let match = await bcrypt.compare(passwordInput, user.password);
+
+            if(match)
+            {
+                flag = true;
+            }
+            else{
+                flag = false;
+            }
         }
-    }
+
+        console.log("Row ", user);
+
+        return flag;
+    };
 
     registerUser(usernameInput, passwordInput) {
         // Connect to DB and save user inputs to a new account
 
-        /*
-        let query = "INSERT INTO Clients (username, password) VALUES (?, ?)";
+        // TODO: Hash password
 
-        // TODO: Hash the password
-
-        con.connect(function(err) {
-            if (err) throw err;
-            con.query(query, [usernameInput, passwordInput], function (err, result, fields) {
-            if (err) throw err;
-            console.log(result);
+        bcrypt.hash(passwordInput, saltRounds, async function(err, hash) {
+            if(err) {
+                res.send("Error: Hashing password failed.")
+            }
+            let newUser = new User({
+                username: usernameInput,
+                password: hash,
             });
+    
+            await newUser.save();
         });
-        */
+    };
 
-        this.#setPassword(passwordInput);
-        this.#setUserName(usernameInput);
-        
-        return;    
-    }
-
-    #setUserName(newName) {
+    setUserName(newName) {
         this.#username = newName;
     }
 
-    #getUserName() {
+    getUserName() {
         return this.#username;
     }
 
-    #setPassword(newPass) {
+    setPassword(newPass) {
         this.#password = newPass;
     }
 
-    #getPassword() {
+    getPassword() {
         return this.#password;
     }
 
 }
 
-export default LoginRegister;
+module.exports = LoginRegister;

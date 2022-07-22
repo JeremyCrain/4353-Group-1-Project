@@ -1,3 +1,6 @@
+import Client from "../../../models/client.js";
+import FuelQuoteDoc from "../../../models/fuelquote.js";
+
 class Profile {
     #idNumber
     #profileName;
@@ -7,19 +10,12 @@ class Profile {
     #quoteHistory;
 
     constructor(id) {
-        this.#setID(id);
+        this.setID(id);
 
-
-        /*
-        let query = "SELECT * FROM Clients WHERE clientID = ?";
-
-        con.connect(function(err) {
-            if (err) throw err;
-            con.query(query, [id], function (err, result, fields) {
-            if (err) throw err;
-            console.log(result);
-            });
+        let result = Client.findOne({
+            _id: id
         });
+
 
         let name, phone, email, state, history;
 
@@ -27,130 +23,98 @@ class Profile {
         phone = result.phoneNumber;
         email = result.emailAddress;
         state = result.state;
-        
+        history = result.quote_history;
 
-        this.#setProfileName(name);
-        this.#setPhone(phone);
-        this.#setEmail(email);
-        this.#setState(state);
+        this.setProfileName(name);
+        this.setPhone(phone);
+        this.setEmail(email);
+        this.setState(state);
 
-        */
 
-        // GET all quote numbers associated with this client from DB
-        /*
-        query = "SELECT fuelquoteID FROM FuelQuote WHERE FuelQuote.clientID = $this.#getID";
-
-        con.connect(function(err) {
-            if (err) throw err;
-            con.query(query, function (err, result, fields) {
-            if (err) throw err;
-            console.log(result);
-            });
-        });
-        */
-
-        result.fuelquoteID.forEach(quote => {
-            this.#setQuoteHistory(quote);
+        result.quote_history.forEach(quote => {
+            this.setQuoteHistory(quote);
         });
 
     };
 
     editProfile(name, phone, email, state) {
-        // Retrieve new values from form then save to DB.
 
-        /*
-        let query = "UPDATE Clients SET (name, phoneNumber, emailAddress, state) VALUES (?, ?, ?, ?)";
 
-        con.connect(function(err) {
-            if (err) throw err;
-            con.query(query, [name, phone, email, state], function (err, result, fields) {
-            if (err) throw err;
-            console.log(result);
-            });
-        });
-        */
-
-        this.#setProfileName(name);
-        this.#setPhone(phone);
-        this.#setEmail(email);
-        this.#setState(state);
+        this.setProfileName(name);
+        this.setPhone(phone);
+        this.setEmail(email);
+        this.setState(state);
     };
 
     showQuoteHistory() {
         // Retrieve quote info from DB
 
-        let history = this.#getQuoteHistory();
+        let history = this.getQuoteHistory();
+        
+        let client = new Client({
+            _id: this.id
+        });
         
 
-        
-
-        history.forEach(quote => {
-            // GET quote information from DB and display it
-            /*
-            let query = "SELECT * FROM FuelQuote WHERE fuelquoteID = ?";
-
-            con.connect(function(err) {
-                if (err) throw err;
-                con.query(query, [quote], function (err, result, fields) {
-                if (err) throw err;
-                console.log(result);
-                });
-            });
-            */
-            
+        client.quote_history.forEach(quote => {            
             // TODO: Display to table
+
+            let quoteDoc = FuelQuoteDoc.findOne({
+                _id: quote
+            });
 
         });
     };
 
-    #setID(newID) {
+    setID(newID) {
         this.#idNumber = newID;        
     };
 
-    #getID() {
+    getID() {
         return this.#idNumber;        
     };
 
-    #setProfileName(newName) {
+    setProfileName(newName) {
         this.#profileName = newName;
     };
 
-    #getProfileName() {
+    getProfileName() {
         return this.#profileName;
     };
 
-    #setPhone(newPhone) {
+    setPhone(newPhone) {
         this.#phoneNumber = newPhone;
     };
 
-    #getPhone() {
+    getPhone() {
         return this.#phoneNumber;
     };
 
-    #setEmail(newEmail) {
+    setEmail(newEmail) {
         this.#emailAddress = newEmail;
     };
 
-    #getEmail() {
+    getEmail() {
         return this.#emailAddress;
     };
 
-    #setState(newState) {
+    setState(newState) {
         this.#inState = newState;
     };
 
-    #getState() {
+    getState() {
         return this.#inState;
     };
 
-    #setQuoteHistory(quoteNumber) {
+    setQuoteHistory(quoteNumber) {
         this.#quoteHistory.push(quoteNumber);
     };
 
-    #getQuoteHistory() {
+    getQuoteHistory() {
         return this.#quoteHistory;
     };
 
 }
 
-export default Profile;
+//export default Profile;
+module.exports = Profile;

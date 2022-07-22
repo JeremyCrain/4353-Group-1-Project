@@ -1,39 +1,40 @@
-import FuelQuote from "./classes/fuel_quote_class.js";
+let userParam = window.location.href;
+let index = userParam.lastIndexOf("/");
+userParam = userParam.substring(index + 1);
 
-function testPricingModule() {
-        
-    // Hardcode user ID/state/history/address; Retrieve from DB
+document.getElementById("quoteForm").action =
+  "/quote/" + userParam;
 
-    let profitMargin = 1.2;
-    let history = [1,2,3];
-    let state = true;
-    let address = "4800 Calhoun Rd. Houston, TX 77004"
 
-    let quote = new FuelQuote;
+document.getElementById('profileLink').href = "/editProfile/" + userParam;
+document.getElementById('quoteLink').href = "/quote/" + userParam;
+document.getElementById('historyLink').href = "/quoteHistory/" + userParam;
 
-    console.log("Calculating rate");
 
-    let rate = quote.calculateRate(profitMargin, state, history);
+const userurl = "http://localhost:3000/profileInfo/" + userParam;
 
-    console.log("Rate" + rate);
-    
-    document.getElementById("rate").value = rate;
-    document.getElementById("address").value = address;
+fetch(userurl)
+  .then((res) => res.json())
+  .then((user) => {
+    console.log("Loading user info...");
+    if (user.length > 0) {
+      console.log(user[0]);
+      user = user[0];
 
-    return rate;
-};
-
-let calculatedRate = testPricingModule();
-
-document.getElementById("galreq").addEventListener('keyup', event => {
-    
-    let request = event.target.value;
-
-    let totalDue = request * calculatedRate;
-
-    document.getElementById("total").value = totalDue;
+      if (user.address != undefined) {
+        address.value = user.address;
+      }
+    }
 });
 
-document.getElementById("submit-button").addEventListener('click', event => {
-    alert("Quote successfully submitted!");
-});
+let total = document.getElementById('total');
+let req = document.getElementById('galreq');
+let rate = document.getElementById('rate');
+
+req.addEventListener('keyup', () => {
+    total.value = req.value * rate.value;
+})
+
+
+// Fetch rate
+//const pricingurl = "http://localhost:3000/profileInfo/" + userParam;

@@ -1,3 +1,5 @@
+import Client from "../../../models/client.js";
+
 class FuelQuote {
     #userID = 0;
     #quoteID = 0;
@@ -10,6 +12,7 @@ class FuelQuote {
     constructor(quoteID)
     {
         // GET quote info from DB
+
 
         /*
         let userID, rate, amount, margin, deliveryDate, address;
@@ -53,62 +56,45 @@ class FuelQuote {
 
         rate = profitMargin * stateRate * historyRate;
 
-        this.#setFuelRate(rate);
-        this.#setProfitMargin(profitMargin);
-
-        /*
-        let query = "INSERT INTO FuelQuote (fuelRate, fuelAmount, profitMargin) VALUES (?, ?, ?)";
-        
-        con.connect(function(err) {
-            if (err) throw err;
-            con.query(query, [rate], function (err, result, fields) {
-            if (err) throw err;
-            console.log(result);
-            });
-        });
-        
-
-        let id = result.insertID;
-
-        this.#setQuoteID(id);
-        */
+        this.setFuelRate(rate);
+        this.setProfitMargin(profitMargin);
 
         return rate;
     };
 
-    #setUserID(newid) {
+    setUserID(newid) {
         this.#userID = newid;
     };
 
-    #getUserID() {
+    getUserID() {
         return this.#userID;
     };
 
-    #setDeliveryDate(newDate) {
+    setDeliveryDate(newDate) {
         this.#deliveryDate = newDate;
     };
 
-    #getDeliveryDate() {
+    getDeliveryDate() {
         return this.#deliveryDate;
     };
 
-    #setAddress(newAddress) {
+    setAddress(newAddress) {
         this.#address = newAddress;
     }
 
-    #getAddress() {
+    getAddress() {
         return this.#address;
     };
 
-    #setQuoteID(id) {
+    setQuoteID(id) {
         this.#quoteID = id;
     };
 
-    #getQuoteID() {
+    getQuoteID() {
         return this.#quoteID;
     };
 
-    #setFuelRate(newRate) {
+    setFuelRate(newRate) {
         this.#fuelRate = newRate;
 
         /*
@@ -124,31 +110,11 @@ class FuelQuote {
         */
     };
 
-    #getFuelRate() {
+    getFuelRate() {
         return this.#fuelRate;
     };
 
-    #setUserID(newID) {
-        this.#userID = newID;
-
-        /*
-        let query = "UPDATE FuelQuote SET fuelAmount = ? WHERE fuelQuoteID = $this.quoteID";
-        
-        con.connect(function(err) {
-            if (err) throw err;
-            con.query(query, [newamount], function (err, result, fields) {
-            if (err) throw err;
-            console.log(result);
-            });
-        });
-        */
-    };
-
-    #getUserID() {
-        return this.#userID;
-    };
-
-    #setFuelAmount(newAmount) {
+    setFuelAmount(newAmount) {
         this.#fuelAmount = newAmount;
 
         /*
@@ -164,11 +130,11 @@ class FuelQuote {
         */
     };
 
-    #getFuelAmount() {
+    getFuelAmount() {
         return this.#fuelAmount;
     };
 
-    #setProfitMargin(newMargin) {
+    setProfitMargin(newMargin) {
         this.#profitMargin = newMargin;
 
         /*
@@ -182,9 +148,10 @@ class FuelQuote {
         */
     };
 
-    #getProfitMargin() {
+    getProfitMargin() {
         return this.#profitMargin;
     };
 };
 
-export default FuelQuote;
+//export default FuelQuote;
+module.exports = FuelQuote;

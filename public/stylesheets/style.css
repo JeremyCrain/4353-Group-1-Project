@@ -29,8 +29,7 @@ input[type=submit] {
     padding: 12px 20px;
     margin: 0 auto;
     margin-top: 8px;
-    display: block;
-    border: 1px solid #ccc;
+    display: flex;
     box-sizing: border-box;
 }
 
@@ -70,7 +69,7 @@ img.avatar {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;;
+    flex-direction: column;
 }
 
 .required-field::after {
@@ -82,6 +81,21 @@ img.avatar {
 span.reg {
     float: right;
     padding-top: 16px;
+}
+
+button {
+    width: 12%;
+    padding: 12px 20px;
+    margin: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#error {
+    color: red;
+    margin: 8px;
 }
 
 @media screen and (max-width: 300px) {

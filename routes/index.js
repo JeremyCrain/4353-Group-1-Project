@@ -16,6 +16,8 @@ router.get("/", (req, res) => {
 router.get("/register", client_controller.register_get);
 router.post("/register", client_controller.register_post);
 
+
+router.get("/loginFail", client_controller.loginFail_get);
 router.get("/login", client_controller.login_get);
 router.post("/login", client_controller.login_post);
 

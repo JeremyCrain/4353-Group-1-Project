@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Register</title>
+    <title>Login</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1" charset='UTF-8'>
     <link href="../stylesheets/style.css" rel="stylesheet">
@@ -10,17 +10,17 @@
 
 <body>
 
-    <a id="login" href="/">Login</a>
-
-    <h2>Registration Form</h2>
+    <h2>Login Form</h2>
 
     <div class="imgcontainer">
         <img src="../images/fuel.png" alt="Avatar" class="avatar">
     </div>
 
+    <div id="error-msg-container">
+        <p id="error-msg">Invalid username or password</p>
+    </div>
 
-
-    <form action="/register" method="POST" onsubmit="return checkFormValid()">
+    <form action="/login" method="POST" id="loginForm">
         
 
         <div class="container">
@@ -29,18 +29,14 @@
 
             <label for="password" class="required-field"><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="password" id="password" required minLength="4">
+            <span id="error">Incorrect username or password. Please try again.</span>
 
-            <label for="password2" class="required-field"><b>Retype Password</b></label>
-            <input type="password" placeholder="Retype Password" name="password2" id="password2" required minLength="4">
+            <input type="submit" value ="Login" id="submit-button" >
+        </div>
 
-            <span id="error"></span>
-
-            <input type="submit" value="Register" id="register-form-submit">
+        <div class="container ">
+            <span class="reg ">Don't have an account? <a href="/register">Register here</a></span>
         </div>
     </form>
-
-    <script src="../javascripts/register.js"></script>
-
 </body>
-
 </html>

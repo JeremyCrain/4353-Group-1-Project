@@ -2,6 +2,8 @@
 <html>
 
 <head>
+    <title>Quote</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1" charset='UTF-8'>
     <link href="../stylesheets/style.css" rel="stylesheet">
 </head>
@@ -14,7 +16,7 @@
 
     <h2>Fuel Quote Form</h2>
 
-    <form action="/quote" method="POST" id="quoteForm">
+    <form action="/quote" method="POST" id="quoteForm" autocomplete="off">
         <div class="imgcontainer">
             <img src="../images/fuel.png" alt="Avatar" class="avatar">
         </div>
@@ -30,9 +32,11 @@
             <input type="text" value="100" name="rate" id="rate" readonly>
 
             <label for="total"><b>Total Amount Due</b></label>
-            <input type="text" value="100" name="total" id="total" readonly>
+            <input type="text" placeholder="Total Amount Due" name="total" id="total" readonly>
             
             <span id="error"></span>
+
+            <button type="button" id="getQuote">Get Quote</button>
 
             <input type="submit" value="Submit" id="submit-button">
         </div>

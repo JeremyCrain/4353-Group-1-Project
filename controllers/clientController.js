@@ -62,6 +62,10 @@ exports.login_get = function (req, res) {
   res.sendFile(path.join(__dirname, "../public/login.html"));
 };
 
+exports.loginFail_get = function (req, res) {
+  res.sendFile(path.join(__dirname, "../public/loginFail.html"));
+};
+
 exports.login_post = async function (req, res) {
   let username, password, loginSuccessful;
 
@@ -75,7 +79,7 @@ exports.login_post = async function (req, res) {
   loginSuccessful = await user.loginUser(username, password);
 
   if (loginSuccessful == false) {
-    res.redirect("/");
+    res.redirect("/loginFail");
   } else {
     res.redirect("/editProfile/" + user.getUserName());
   }

@@ -2,6 +2,8 @@
 <html>
 
 <head>
+    <title>Profile</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1" charset='UTF-8'>
     <link href="../stylesheets/style.css" rel="stylesheet">
 </head>
@@ -32,8 +34,8 @@
             <label for="address" class="required-field"><b>Address</b></label>
             <input type="text" placeholder="Enter Address" name="address" id="address" maxlength="100" required>
 
-            <label for="email"><b>Email Address</b></label>
-            <input type="text" placeholder="Enter Email Address" name="email" id="email" maxlength="30" pattern="(\w+)@(\w+\.com)" required>
+            <label for="email" class="required-field"><b>Email Address</b></label>
+            <input type="text" placeholder="Enter Email Address" name="email" id="email" maxlength="30" pattern="(\w+)@(\w+\.\w{3})" title="username@domain.top-level" required>
 
             <label for="state" class="required-field"><b>State</b></label>
             <select name="state" id="state">

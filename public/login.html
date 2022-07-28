@@ -2,6 +2,8 @@
 <html>
 
 <head>
+    <title>Login</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1" charset='UTF-8'>
     <link href="../stylesheets/style.css" rel="stylesheet">
 </head>
@@ -18,7 +20,7 @@
         <p id="error-msg">Invalid username or password</p>
     </div>
 
-    <form action="/login" method="POST" id="loginForm" onsubmit="return checkFormValid()">
+    <form action="/login" method="POST" id="loginForm">
         
 
         <div class="container">
@@ -37,7 +39,5 @@
         </div>
     </form>
 </body>
-
-<script src="../javascripts/login.js"> </script>
 
 </html>

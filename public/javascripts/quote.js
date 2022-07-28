@@ -3,7 +3,6 @@ let index = userParam.lastIndexOf("/");
 userParam = userParam.substring(index + 1);
 
 document.getElementById("quoteForm").action = "/quote/" + userParam;
-
 document.getElementById("profileLink").href = "/editProfile/" + userParam;
 document.getElementById("quoteLink").href = "/quote/" + userParam;
 document.getElementById("historyLink").href = "/quoteHistory/" + userParam;
@@ -27,10 +26,28 @@ fetch(userurl)
 let total = document.getElementById("total");
 let req = document.getElementById("galreq");
 let rate = document.getElementById("rate");
+let button = document.getElementById("getQuote");
+let error = document.getElementById('error');
+let form = document.getElementById('quoteForm');
 
-req.addEventListener("keyup", () => {
+button.addEventListener("click", () => {
   total.value = req.value * rate.value;
 });
+
+form.onsubmit = (event) => {
+  if(!total.value)
+  {
+    event.preventDefault();
+    error.innerHTML = "Please click Get Quote before submitting your request.";
+    return false;
+  }
+  else {
+    console.log('Submitting form...');
+    console.log(total.value);
+    event.submit();
+    return true;
+  }
+};
 
 // Fetch rate
 //const pricingurl = "http://localhost:3000/profileInfo/" + userParam;

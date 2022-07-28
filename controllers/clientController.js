@@ -2,8 +2,8 @@ var Client = require("../models/client.js");
 var User = require("../models/userCred");
 const LoginRegister = require("../public/javascripts/classes/login_register_class.js");
 const path = require("path");
-const { response } = require("express");
-const { nextTick } = require("process");
+
+
 
 exports.edit_profile_get = function (req, res) {
   res.sendFile(path.join(__dirname, "../public/profile.html"));

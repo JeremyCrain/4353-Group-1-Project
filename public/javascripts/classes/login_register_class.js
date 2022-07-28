@@ -5,6 +5,7 @@ const saltRounds = 10;
 
 class LoginRegister {
     #username;
+    #id;
 
     async loginUser(usernameInput, passwordInput) {
         // Connect to DB and check username & password vs inputs
@@ -28,13 +29,12 @@ class LoginRegister {
             {
                 flag = true;
                 this.setUserName(usernameInput);
+                this.setID(user._id);
             }
             else{
                 flag = false;
             }
         }
-
-        //console.log("Row ", user);
 
         return flag;
     };
@@ -63,6 +63,14 @@ class LoginRegister {
 
     getUserName() {
         return this.#username;
+    }
+
+    setID(newID) {
+        this.#id = newID;
+    }
+
+    getID() {
+        return this.#id;
     }
 };
 

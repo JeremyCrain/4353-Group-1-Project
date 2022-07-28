@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 const Client = require("../models/client.js");
 const Quote = require("../models/fuelquote.js");
-
+const User = require("../models/userCred.js");
 
 // Require controller modules.
 var client_controller = require("../controllers/clientController");
@@ -13,6 +13,8 @@ router.get("/", (req, res) => {
   res.redirect("/login");
 });
 
+
+
 router.get("/register", client_controller.register_get);
 router.post("/register", client_controller.register_post);
 
@@ -22,7 +24,7 @@ router.get("/login", client_controller.login_get);
 router.post("/login", client_controller.login_post);
 
 router.get("/editProfile/:user", client_controller.edit_profile_get);
-router.post("/editProfile/:user", client_controller.edit_profile_post);
+router.post("/editProfile/:user",  client_controller.edit_profile_post);
 
 // Fuel Quote Routes
 
@@ -37,7 +39,6 @@ router.get("/profileInfo/:user", (req, res) => {
   Client.find({
     username: req.params.user,
   })
-    .select({ password: 0 })
     .exec((err, result) => {
       if (err) {
         res.status(400).send("Error fetching user info");
@@ -53,6 +54,20 @@ router.get("/quoteInfo/:id", (req, res) => {
   }).exec((err, result) => {
     if (err) {
       res.status(400).send("Error fetching quote info");
+    } else {
+      res.json(result);
+    }
+  });
+});
+
+router.get("/userInfo/:username", (req, res) => {
+  User.find({
+    username: req.params.username,
+  })
+  .select({ password: 0 })
+  .exec((err, result) => {
+    if (err) {
+      res.status(400).send("Error fetching user info");
     } else {
       res.json(result);
     }

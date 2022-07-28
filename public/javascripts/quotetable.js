@@ -7,7 +7,7 @@ document.getElementById("quoteLink").href = "/quote/" + userParam;
 document.getElementById("historyLink").href = "/quoteHistory/" + userParam;
 
 const userurl = "http://localhost:3000/profileInfo/" + userParam;
-let quoteurl = "http://localhost:3000/quoteInfo/" + userParam;
+const quoteurl = "http://localhost:3000/quoteInfo/" + userParam;
 
 // GET user quote history from DB
 
@@ -24,7 +24,7 @@ fetch(userurl)
         fetch(quoteurl)
           .then((res) => res.json())
           .then((quote) => {
-            console.log("Loading quote...");
+            //console.log("Loading quote...");
             console.log(quote);
             quote = quote[0];
 
@@ -63,8 +63,6 @@ fetch(userurl)
             row.appendChild(cellDate);
             row.appendChild(cellRate);
             row.appendChild(cellTotal);
-
-            console.log(row);
 
             document.getElementById("historyTable").append(row);
           });

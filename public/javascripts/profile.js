@@ -9,7 +9,6 @@ let index = userParam.lastIndexOf("/");
 userParam = userParam.substring(index + 1);
 
 document.getElementById("profileForm").action = "/editProfile/" + userParam;
-
 document.getElementById("profileLink").href = "/editProfile/" + userParam;
 document.getElementById("quoteLink").href = "/quote/" + userParam;
 document.getElementById("historyLink").href = "/quoteHistory/" + userParam;
@@ -39,6 +38,11 @@ fetch(userurl)
       }
       if (user.address != undefined) {
         address.value = user.address;
+      }
+      if (user.in_state != undefined) {
+        if(user.in_state == true) {
+          state.value = "texas";
+        }
       }
     }
   });

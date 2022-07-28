@@ -30,21 +30,29 @@ let button = document.getElementById("getQuote");
 let error = document.getElementById('error');
 let form = document.getElementById('quoteForm');
 
+let flag = false;
+
 button.addEventListener("click", () => {
   total.value = req.value * rate.value;
+  flag = true;
+  button.innerText = "Update Quote";
+  error.innerHTML = "";
 });
 
+req.addEventListener('keyup', () => {
+  flag = false;
+})
+
 form.onsubmit = (event) => {
-  if(!total.value)
+  if(!total.value || flag == false)
   {
     event.preventDefault();
-    error.innerHTML = "Please click Get Quote before submitting your request.";
+    error.innerHTML = "Please click " + button.innerText + " before submitting your request.";
     return false;
   }
   else {
     console.log('Submitting form...');
     console.log(total.value);
-    event.submit();
     return true;
   }
 };

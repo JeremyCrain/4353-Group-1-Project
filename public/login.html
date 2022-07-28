@@ -16,10 +16,6 @@
         <img src="../images/fuel.png" alt="Avatar" class="avatar">
     </div>
 
-    <div id="error-msg-container">
-        <p id="error-msg">Invalid username or password</p>
-    </div>
-
     <form action="/login" method="POST" id="loginForm">
         
 
@@ -29,6 +25,7 @@
 
             <label for="password" class="required-field"><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="password" id="password" required minLength="4">
+            
             <span id="error"></span>
 
             <input type="submit" value ="Login" id="submit-button" >
@@ -38,6 +35,7 @@
             <span class="reg ">Don't have an account? <a href="/register">Register here</a></span>
         </div>
     </form>
+
 </body>
 
 </html>

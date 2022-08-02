@@ -34,11 +34,11 @@ let current_price = 1.50 ;
 let profit_factor = 0.1;
 let location = 'texas';
 let location_factor,history_factor;
-console.log("user",user.address);
-if(user.address == location){
+console.log("user",user.state);
+if(user.state == location){
   location_factor=0.02;
 }
-if(user.address != location) {
+if(user.state != location) {
   location_factor=0.04;
 }
 if(!user.quote_history.length){

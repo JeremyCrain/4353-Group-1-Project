@@ -7,7 +7,7 @@ var ClientInformationSchema = new Schema({
   last_name: { type: String, maxLength: 100 },
   date_of_birth: { type: Date },
   address: { type: String },
-  in_state: { type: Boolean, default: true },
+  state: { type: String, default: true },
   phone_number: { type: String, maxLength: 12 },
   email_address: { type: String },
   quote_history: { type: [Schema.Types.ObjectId], ref: "Quote" },

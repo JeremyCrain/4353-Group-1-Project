@@ -23,12 +23,6 @@ exports.edit_profile_post = async function (req, res) {
   email = req.body.email;
   state = req.body.state;
 
-  if (state == "texas") {
-    state = true;
-  } else {
-    state = false;
-  }
-
   let clientInfo = await Client.findOne({
     username: username,
   });
@@ -40,7 +34,7 @@ exports.edit_profile_post = async function (req, res) {
       phone_number: phone,
       address: address,
       email_address: email,
-      in_state: state,
+      state: state,
       username: username,
     });
   } else {
@@ -49,7 +43,7 @@ exports.edit_profile_post = async function (req, res) {
     clientInfo.phone_number = phone;
     clientInfo.address = address;
     clientInfo.email_address = email;
-    clientInfo.in_state = state;
+    clientInfo.state = state;
   }
 
   await clientInfo.save();

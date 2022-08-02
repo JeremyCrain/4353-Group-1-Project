@@ -8,7 +8,7 @@ var QuoteSchema = new Schema({
   profit_margin: { type: Number },
   amount_requested: { type: Number, required: true },
   fuel_rate: { type: Number, required: true },
-  in_state: { type: Boolean, required: true },
+  state: { type: String, required: true },
   delivery_address: { type: String, required: true },
   total_cost: { type: Number, required: true },
 });

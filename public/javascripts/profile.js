@@ -39,10 +39,8 @@ fetch(userurl)
       if (user.address != undefined) {
         address.value = user.address;
       }
-      if (user.in_state != undefined) {
-        if(user.in_state == true) {
-          state.value = "texas";
-        }
+      if (user.state != undefined) {
+        state.value = user.state;
       }
     }
   });

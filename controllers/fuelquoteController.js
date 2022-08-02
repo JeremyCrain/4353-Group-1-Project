@@ -27,7 +27,7 @@ exports.quote_info_post = async function (req, res) {
   } else {
     let quote = new Quote({
       requester: clientInfo,
-      in_state: clientInfo.in_state,
+      state: clientInfo.state,
       amount_requested: galreq,
       fuel_rate: rate,
       delivery_address: address,

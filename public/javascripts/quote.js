@@ -23,44 +23,50 @@ fetch(userurl)
       }
     }
  
-
 let total = document.getElementById("total");
 let req = document.getElementById("galreq");
 let rate = document.getElementById("rate");
 let button = document.getElementById("getQuote");
 let error = document.getElementById('error');
 let form = document.getElementById('quoteForm');
-let current_price = 1.50 ;
-let profit_factor = 0.1;
-let location = 'texas';
-let location_factor,history_factor;
-console.log("user",user.state);
-if(user.state == location){
-  location_factor=0.02;
-}
-if(user.state != location) {
-  location_factor=0.04;
-}
-if(!user.quote_history.length){
-  history_factor=0;
-}
-if(user.quote_history.length){
-  history_factor=0.01;
-}
-if(req.value<=1000){
-  gallon_factor=0.03;
-}
-if(req.value>1000){
-  gallon_factor=0.02;
-}
-
 
 let flag = false;
 
-button.addEventListener("click", () => {
-  margin=(location_factor - history_factor + gallon_factor + profit_factor)*current_price;
+function PricingModule() {
+  let current_price = 1.5;
+  let profit_factor = 0.1;
+  let location = "texas";
+  let location_factor, history_factor;
+  console.log("user", user.state);
+  if (user.state == location) {
+    location_factor = 0.02;
+  }
+  if (user.state != location) {
+    location_factor = 0.04;
+  }
+  if (!user.quote_history.length) {
+    history_factor = 0;
+  }
+  if (user.quote_history.length) {
+    history_factor = 0.01;
+  }
+  if (req.value <= 1000) {
+    gallon_factor = 0.03;
+  }
+  if (req.value > 1000) {
+    gallon_factor = 0.02;
+  }
+
+  margin =
+    (location_factor - history_factor + gallon_factor + profit_factor) *
+    current_price;
+  
   rate.value=current_price+margin;
   total.value =Math.round((req.value * rate.value)*100)/100;
+}
+
+button.addEventListener("click", () => {
+  PricingModule();
   flag = true;
   button.innerText = "Update Quote";
   error.innerHTML = "";

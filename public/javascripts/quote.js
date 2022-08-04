@@ -77,20 +77,23 @@ req.addEventListener('keyup', () => {
 })
 
 form.onsubmit = (event) => {
-  if(!total.value || flag == false)
+  if(user.address == undefined)
+  {
+    event.preventDefault();
+    error.innerHTML = "Please fill out profile information before submitting your request.";
+    return false;
+  }
+  else if(!total.value || flag == false)
   {
     event.preventDefault();
     error.innerHTML = "Please click " + button.innerText + " before submitting your request.";
     return false;
   }
-  else {
+  else 
+  {
     console.log('Submitting form...');
     console.log(total.value);
     return true;
   }
 };
-
 });
-
-// Fetch rate
-//const pricingurl = "http://localhost:3000/profileInfo/" + userParam;

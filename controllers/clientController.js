@@ -44,11 +44,11 @@ exports.edit_profile_post = async function (req, res) {
     clientInfo.address = address;
     clientInfo.email_address = email;
     clientInfo.state = state;
+    clientInfo.updated = Date.now();
   }
 
   await clientInfo.save();
 
-  //res.send("User info successfully updated.");
   res.sendFile(path.join(__dirname, "../public/profile.html"));
 };
 

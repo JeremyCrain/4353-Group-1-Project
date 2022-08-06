@@ -42,8 +42,6 @@ class LoginRegister {
     registerUser(usernameInput, passwordInput) {
         // Connect to DB and save user inputs to a new account
 
-        // TODO: Hash password
-
         bcrypt.hash(passwordInput, saltRounds, async function(err, hash) {
             if(err) {
                 res.send("Error: Hashing password failed.")
